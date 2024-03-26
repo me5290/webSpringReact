@@ -3,6 +3,7 @@ package web.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import web.model.dto.MemberDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter @Setter
 @ToString
-public class MemberEntity {
+public class MemberEntity extends BaseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mno;
@@ -39,4 +40,15 @@ public class MemberEntity {
     @ToString.Exclude
     @Builder.Default
     private List<ReplyEntity> replyEntityList = new ArrayList<>();
+
+    // 엔티티를 dto로 변환하는 메소드 - 호출때문에
+    public MemberDto toDto(){
+        return MemberDto.builder()
+                .mno(this.mno)
+                .mname(this.mname)
+                .memail(this.memail)
+                .mrol(this.mrol)
+                .mpassword(this.mpassword)
+                .build();
+    }
 }

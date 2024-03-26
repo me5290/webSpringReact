@@ -28,6 +28,15 @@ import ConfirmButton from './chapter8/ConfirmButton';
 // chapter9 예제/실습
 import LandingPage from './chapter9/LandingPage';
 
+// chapter10 예제/실습
+import AttendanceBook from './chapter10/AttendanceBook';
+
+// chapter11 예제/실습
+import NameForm from './chapter11/NameForm';
+import SignUp2 from './chapter11/SignUp2';
+
+import SignUp from './component/member/SignUp';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(()=>{
 //   root.render( // 여기가 렌더링 되는 곳
@@ -39,7 +48,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render( // 여기가 렌더링 되는 곳
   <React.StrictMode>
-    <Counter2 />
+    <SignUp />
   </React.StrictMode>
 );
 
