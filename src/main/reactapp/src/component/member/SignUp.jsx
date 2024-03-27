@@ -22,7 +22,17 @@ export default function SignUp(props){
             axios.HTTP메소드명(url,data).then(응답매개변수 => {응답로직})
         */
         let info = {memail : memail , mpassword : mpassword , mname : mname};
-        axios.post("http://localhost:8080/member/signup/post.do",info).then(response=>{console.log(response)})
+        axios.post("/member/signup/post.do",info)
+        .then(response=>{
+            console.log(response);
+            if(response.data){
+                alert('회원가입 성공');
+                window.location.href="/member/login";
+            }else{
+                alert('회원가입 실패');
+            }
+        })
+        .catch(error=>{console.log(error)})
     }
 
     return(

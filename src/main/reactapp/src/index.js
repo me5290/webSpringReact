@@ -35,7 +35,12 @@ import AttendanceBook from './chapter10/AttendanceBook';
 import NameForm from './chapter11/NameForm';
 import SignUp2 from './chapter11/SignUp2';
 
+// chapter0 axios
+import Axios컴포넌트 from './chapter0/Axios컴포넌트';
+import Route컴포넌트 from './chapter0/Route컴포넌트';
+
 import SignUp from './component/member/SignUp';
+import Index from './component/Index';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(()=>{
@@ -48,7 +53,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render( // 여기가 렌더링 되는 곳
   <React.StrictMode>
-    <SignUp />
+    <Index />
   </React.StrictMode>
 );
 
