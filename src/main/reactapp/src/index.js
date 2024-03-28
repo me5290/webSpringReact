@@ -35,6 +35,12 @@ import AttendanceBook from './chapter10/AttendanceBook';
 import NameForm from './chapter11/NameForm';
 import SignUp2 from './chapter11/SignUp2';
 
+// chapter12 예제/실습
+import Calculator from './chapter12/Calculator';
+
+// chapter13 예제/실습
+import ProfileCard from './chapter13/ProfileCard';
+
 // chapter0 axios
 import Axios컴포넌트 from './chapter0/Axios컴포넌트';
 import Route컴포넌트 from './chapter0/Route컴포넌트';

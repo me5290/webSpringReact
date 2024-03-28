@@ -36,4 +36,11 @@ public class MemberController {
     public MemberDto doLoginInfo(){
         return memberService.doLoginInfo();
     }
+
+    // 5. 아이디 중복검사
+    @GetMapping("/idConfirm/get.do")
+    public boolean doIdConfirm(@RequestParam String id){
+        System.out.println("id"+id);
+        return memberService.doIdConfirm(id);
+    }
 }

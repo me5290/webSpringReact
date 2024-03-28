@@ -15,6 +15,18 @@ export default function Header(props){
         }).catch(e=>{console.log(e)})
     },[])
 
+    const logout = ()=>{
+        axios.get('/member/logout/get.do')
+        .then(r=>{
+            if(r){
+                alert('로그아웃 성공');
+                setLoginInfo('');
+            }else{
+                alert('로그아웃 실패');
+            }
+        }).catch(e=>{console.log(e)})
+    }
+
     return(
         <div>
             {loginInfo && <span>{loginInfo.memail}님</span>}
@@ -27,6 +39,9 @@ export default function Header(props){
                 </li>
                 <li>
                     <Link to="/member/login">로그인</Link>
+                </li>
+                <li>
+                    <a href="#" onClick={logout}>로그아웃</a>
                 </li>
             </ul>
         </div>

@@ -78,4 +78,18 @@ public class MemberService {
             return null;
         }
     }
+
+    // 5. 아이디 중복검사
+    public boolean doIdConfirm(String id){
+        List<MemberEntity> memberEntityList = memberEntityRepository.findAll();
+
+        for (int i=0; i < memberEntityList.size();i++){
+            MemberEntity m = memberEntityList.get(i);
+            System.out.println(m.getMpassword());
+            if(m.getMemail().equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -18,21 +18,30 @@ export default function SignUp(props){
         console.log(mpassword);
         console.log(mname);
 
-        /*
-            axios.HTTP메소드명(url,data).then(응답매개변수 => {응답로직})
-        */
         let info = {memail : memail , mpassword : mpassword , mname : mname};
-        axios.post("/member/signup/post.do",info)
-        .then(response=>{
-            console.log(response);
-            if(response.data){
-                alert('회원가입 성공');
-                window.location.href="/member/login";
+
+        axios.get("/member/idConfirm/get.do",{params:{id:memail}})
+        .then(r=>{
+            console.log(r)
+            if(r.data){
+                alert('아이디가 중복 되었습니다.');
             }else{
-                alert('회원가입 실패');
+                /*
+                    axios.HTTP메소드명(url,data).then(응답매개변수 => {응답로직})
+                */
+                axios.post("/member/signup/post.do",info)
+                .then(response=>{
+                    console.log(response);
+                    if(response.data){
+                        alert('회원가입 성공');
+                        window.location.href="/member/login";
+                    }else{
+                        alert('회원가입 실패');
+                    }
+                })
+                .catch(error=>{console.log(error)})
             }
-        })
-        .catch(error=>{console.log(error)})
+        }).catch(error=>{console.log(error)})
     }
 
     return(
