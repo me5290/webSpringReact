@@ -3,6 +3,7 @@ package web.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import web.model.dto.BoardDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @Getter @Setter
 @ToString
 @Builder
-public class BoardEntity { // 테이블
+public class BoardEntity extends BaseTime{ // 테이블
     @Id // PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bno;
@@ -33,4 +34,16 @@ public class BoardEntity { // 테이블
     @ToString.Exclude
     @Builder.Default
     private List<ReplyEntity> replyEntityList = new ArrayList<>();
+
+    public BoardDto toDto(){
+        return BoardDto.builder()
+                .bno(this.bno)
+                .bcontent(this.bcontent)
+                .bview(this.bview)
+                .mno_fk(memberEntity.getMno())
+                .memail(memberEntity.getMemail())
+                .cdate(this.getCdate())
+                .udate(this.getUdate())
+                .build();
+    }
 }

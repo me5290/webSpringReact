@@ -2,6 +2,7 @@ package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import web.model.dto.BoardDto;
 import web.model.entity.BoardEntity;
 import web.service.BoardService;
 
@@ -14,8 +15,8 @@ public class BoardController {
     private BoardService boardService;
 
     @PostMapping("/post.do")
-    public boolean postBoard(){
-        return boardService.postBoard();
+    public boolean postBoard(BoardDto boardDto){
+        return boardService.postBoard(boardDto);
     }
 
     @GetMapping("/get.do")
