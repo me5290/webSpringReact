@@ -21,6 +21,7 @@ import CommentList from './chapter5/CommentList';
 import Counter from './chapter7/Counter';
 import UseStateList from './chapter7/UseStateList';
 import Counter2 from './chapter7/Counter2';
+import TextInputWithFocusButton from './chapter7/TextInputWithFocusButton';
 
 // chapter8 예제/실습
 import ConfirmButton from './chapter8/ConfirmButton';
@@ -40,6 +41,9 @@ import Calculator from './chapter12/Calculator';
 
 // chapter13 예제/실습
 import ProfileCard from './chapter13/ProfileCard';
+
+// chapter14 예제/실습
+import DarkOrLight from './chapter14/DarkOrLight';
 
 // chapter0 axios
 import Axios컴포넌트 from './chapter0/Axios컴포넌트';

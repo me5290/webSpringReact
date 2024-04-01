@@ -12,6 +12,7 @@ import web.model.repository.BoardEntityRepository;
 import web.model.repository.MemberEntityRepository;
 import web.model.repository.ReplyEntityRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,11 +56,22 @@ public class BoardService {
 
     // R
     @Transactional
-    public List<Object> getBoard(){
+    public List<BoardDto> getBoard(){
         // 1. 리포지토리를 이용한 모든 엔티티를 호출
         List<BoardEntity> list = boardEntityRepository.findAll();
-        System.out.println("list = " + list);
-        return null;
+
+        // 2. 엔티티를 DTO로 변환
+        List<BoardDto> boardDtoList = new ArrayList<>();
+            // 1. 꺼내온 엔티티를 순회한다.
+        for(int i=0; i < list.size(); i++){
+            // 2. 하나씩 엔티티를 꺼낸다.
+            BoardEntity boardEntity = list.get(i);
+            // 3. 해당 엔티티를 dto로 변환한다.
+            BoardDto boardDto = boardEntity.toDto();
+            // 4. 변환된 dto를 리스트에 담는다.
+            boardDtoList.add(boardDto);
+        }
+        return boardDtoList;
     }
 
     // U

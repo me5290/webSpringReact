@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { LoginInfoContext } from "../Index";
 
 export default function Header(props){
-    // 로그인정보 state변수
-    const [loginInfo , setLoginInfo] = useState('');
+    const {loginInfo , setLoginInfo} = useContext(LoginInfoContext);
 
     // 컴포넌트 생성시 axios 실행해서 로그인 회원정보 호출
     useEffect(()=>{
@@ -21,6 +21,7 @@ export default function Header(props){
             if(r){
                 alert('로그아웃 성공');
                 setLoginInfo('');
+                window.location.href = '/member/login';
             }else{
                 alert('로그아웃 실패');
             }
@@ -33,6 +34,14 @@ export default function Header(props){
             <ul>
                 <li>
                     <Link to="/">홈</Link>
+                </li>
+                {loginInfo && 
+                    <li>
+                        <Link to="/board/write">글쓰기</Link>
+                    </li>
+                }
+                <li>
+                    <Link to="/board">전체글보기</Link>
                 </li>
                 <li>
                     <Link to="/member/signup">회원가입</Link>
