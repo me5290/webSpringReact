@@ -27,9 +27,9 @@ export default function List(props){
             </thead>
             <tbody>
                 {
-                    boardlist.map(r=>{
+                    boardlist.map((r,index)=>{
                         return(
-                            <tr>
+                            <tr key={index}>
                                 <td>
                                     {r.bcontent}
                                 </td>

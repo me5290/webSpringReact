@@ -49,9 +49,11 @@ export default function Header(props){
                 <li>
                     <Link to="/member/login">로그인</Link>
                 </li>
-                <li>
-                    <a href="#" onClick={logout}>로그아웃</a>
-                </li>
+                {loginInfo && 
+                    <li>
+                        <a href="#" onClick={logout}>로그아웃</a>
+                    </li>
+                }
             </ul>
         </div>
     )
