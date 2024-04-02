@@ -6,15 +6,18 @@ import org.springframework.stereotype.Service;
 import web.model.dto.BoardDto;
 import web.model.dto.MemberDto;
 import web.model.entity.BoardEntity;
+import web.model.entity.FileEntity;
 import web.model.entity.MemberEntity;
 import web.model.entity.ReplyEntity;
 import web.model.repository.BoardEntityRepository;
+import web.model.repository.FileEntityRepository;
 import web.model.repository.MemberEntityRepository;
 import web.model.repository.ReplyEntityRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BoardService {
@@ -26,10 +29,17 @@ public class BoardService {
     private ReplyEntityRepository replyEntityRepository;
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private FileService fileService;
+    @Autowired
+    private FileEntityRepository fileEntityRepository;
+
 
     // C
     @Transactional
     public boolean postBoard(BoardDto boardDto){
+
+
         MemberDto loginDto = memberService.doLoginInfo();
         if (loginDto == null){
             return false;
@@ -45,6 +55,16 @@ public class BoardService {
         MemberEntity memberEntity = optionalMemberEntity.get();
             // 글쓰기
         BoardEntity saveBoard = boardEntityRepository.save(boardDto.toEntity());
+
+        for(int i = 0; i < boardDto.getUploadList().size(); i++) {
+            String filename = fileService.fileUpload(boardDto.getUploadList().get(i));
+            System.out.println("filename : " + filename);
+            FileEntity fileEntity = FileEntity.builder()
+                    .bfile(filename)
+                    .boardEntity(saveBoard)
+                    .build();
+            fileEntityRepository.save(fileEntity);
+        }
             // Fk 대입
         if (saveBoard.getBno() >= 1){
             saveBoard.setMemberEntity(memberEntity);
@@ -57,6 +77,8 @@ public class BoardService {
     // R
     @Transactional
     public List<BoardDto> getBoard(){
+        // ================ 1 ================ //
+/*
         // 1. 리포지토리를 이용한 모든 엔티티를 호출
         List<BoardEntity> list = boardEntityRepository.findAll();
 
@@ -68,10 +90,19 @@ public class BoardService {
             BoardEntity boardEntity = list.get(i);
             // 3. 해당 엔티티를 dto로 변환한다.
             BoardDto boardDto = boardEntity.toDto();
+                for(int j=0; j < boardEntity.getFileEntityList().size(); j++){
+                    FileEntity fileEntity = boardEntity.getFileEntityList().get(j);
+
+                }
             // 4. 변환된 dto를 리스트에 담는다.
             boardDtoList.add(boardDto);
         }
         return boardDtoList;
+*/
+        // =================================== //
+        return boardEntityRepository.findAll().stream().map((board)->{
+            return board.toDto();
+        }).collect(Collectors.toList());
     }
 
     // U

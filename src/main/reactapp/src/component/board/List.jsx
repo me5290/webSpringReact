@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import MediaCard from "./MediaCard";
 
 export default function List(props){
     const [boardlist , setBoardList] = useState([]);
@@ -14,33 +15,14 @@ export default function List(props){
     },[])
 
     return(
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        내용
-                    </th>
-                    <th>
-                        작성자
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    boardlist.map((r,index)=>{
-                        return(
-                            <tr key={index}>
-                                <td>
-                                    {r.bcontent}
-                                </td>
-                                <td>
-                                    {r.memail}
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
-            </tbody>
-        </table>
+        <div style={{display:'flex' , flexWrap: "wrap"}}>
+            {
+                boardlist.map((r,index)=>{
+                    return(
+                        <MediaCard r = {r}/>
+                    )
+                })
+            }
+        </div>
     )
 }

@@ -15,7 +15,7 @@ public class BoardController {
     private BoardService boardService;
 
     @PostMapping("/post.do")
-    public boolean postBoard(@RequestBody BoardDto boardDto){
+    public boolean postBoard(BoardDto boardDto){
         System.out.println("boardDto = " + boardDto);
         return boardService.postBoard(boardDto);
     }
