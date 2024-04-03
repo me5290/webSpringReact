@@ -6,6 +6,6 @@ import web.model.entity.BoardEntity;
 import web.model.entity.FileEntity;
 
 @Repository
-public interface FileEntityRepository extends JpaRepository<FileEntity,Integer>{
+public interface FileEntityRepository extends JpaRepository<FileEntity,String>{
 
 }

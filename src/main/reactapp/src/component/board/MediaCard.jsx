@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function MediaCard(props) {
+    const arrayDelete = ()=>{
+      props.delete(props.r.bno);
+    }
     return (
       <Card sx={{ width: 360 , margin: '20px'}}>
         <CardMedia
@@ -23,8 +26,7 @@ export default function MediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
+          <Button onClick={arrayDelete} size="small">삭제</Button>
         </CardActions>
       </Card>
     );

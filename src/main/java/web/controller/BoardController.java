@@ -3,6 +3,7 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import web.model.dto.BoardDto;
+import web.model.dto.PageDto;
 import web.model.entity.BoardEntity;
 import web.service.BoardService;
 
@@ -21,8 +22,8 @@ public class BoardController {
     }
 
     @GetMapping("/get.do")
-    public List<BoardDto> getBoard(){
-        return boardService.getBoard();
+    public PageDto getBoard(int page , int view){
+        return boardService.getBoard(page , view);
     }
 
     @PutMapping("/put.do")
@@ -31,7 +32,7 @@ public class BoardController {
     }
 
     @DeleteMapping("/delete.do")
-    public boolean deleteBoard(){
-        return boardService.deleteBoard();
+    public boolean deleteBoard(int bno){
+        return boardService.deleteBoard(bno);
     }
 }
