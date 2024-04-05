@@ -54,3 +54,14 @@ export default function List(props){
         </div>
     )
 }
+
+/*
+    렌더링 방법
+    
+    1. get 방식
+        - window.location.href = "URL";
+
+    2. 라우터 방식
+        - useNavigate()훅 , import {useNavigate} from 'react-router-dom';
+        - navigate(라우터URL)
+*/
