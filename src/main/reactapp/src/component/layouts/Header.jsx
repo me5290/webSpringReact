@@ -43,6 +43,11 @@ export default function Header(props){
                 <li>
                     <Link to="/board">전체글보기</Link>
                 </li>
+                {loginInfo && 
+                    <li>
+                        <Link to="/chatting">채팅</Link>
+                    </li>
+                }
                 <li>
                     <Link to="/member/signup">회원가입</Link>
                 </li>

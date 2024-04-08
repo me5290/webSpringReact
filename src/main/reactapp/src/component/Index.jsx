@@ -7,6 +7,7 @@ import Login from "./member/Login";
 import React, { useState } from "react";
 import Write from "./board/Write";
 import List from "./board/List";
+import Chatting from "./chat/Chatting";
 
 // 컨텍스트 만들기
 // 1. React.createContext(초기값) 이용한 컨텍스트 선언
@@ -31,6 +32,7 @@ export default function Index(props){
                             <Route path="/member/login" element={<Login/>}/>
                             <Route path="/board/write" element={<Write/>}/>
                             <Route path="/board" element={<List/>}/>
+                            <Route path="/chatting" element={<Chatting/>}/>
                         </Routes>
                         <Footer/>
                     </div>
