@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface MemberEntityRepository extends JpaRepository<MemberEntity,Integer> {
     // 1. 특정 필드의 조건으로 레코드/엔티티 검색
-//    MemberEntity findByMemail(String memail);
+    MemberEntity findByMemail(String memail);
 
     // 2. 특정 필드의 조건으로 존재여부 검색
     boolean existsByMemail(String memail);

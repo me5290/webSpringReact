@@ -37,15 +37,15 @@ export default function Header(props){
                 </li>
                 {loginInfo && 
                     <li>
-                        <Link to="/board/write">글쓰기</Link>
+                        <a href="/board/write">글쓰기</a>
                     </li>
                 }
                 <li>
-                    <Link to="/board">전체글보기</Link>
+                    <a href="/board">전체글보기</a>
                 </li>
                 {loginInfo && 
                     <li>
-                        <Link to="/chatting">채팅</Link>
+                        <a href="/chatting">채팅</a>
                     </li>
                 }
                 <li>
